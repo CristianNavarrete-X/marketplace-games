@@ -1,6 +1,6 @@
 <?php
 
-// Alumno: Cristian Navarrete - Alejandro Ponce
+// Alumnos: Cristian Navarrete - Alejandro Ponce
 
 namespace App\Models;
 
@@ -18,10 +18,5 @@ class Order extends Model
         return $this->belongsToMany(Product::class, 'order_items')
                     ->withPivot('quantity', 'unit_price')
                     ->withTimestamps();
-    }
-
-    public function items()
-    {
-        return $this->hasMany(OrderItem::class);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-// Alumno: Cristian Navarrete - Alejandro Ponce
+// Alumnos: Cristian Navarrete - Alejandro Ponce
 
 namespace App\Models;
 
@@ -16,6 +16,11 @@ class Product extends Model
     public function seller()
     {
         return $this->belongsTo(Seller::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function orders()

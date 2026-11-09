@@ -1,6 +1,6 @@
 <?php
 
-// Alumno: Cristian Navarrete - Alejandro Ponce
+// Alumnos: Cristian Navarrete - Alejandro Ponce
 
 namespace App\Models;
 
@@ -12,14 +12,4 @@ class OrderItem extends Model
     use HasFactory;
 
     protected $fillable = ['order_id', 'product_id', 'quantity', 'unit_price'];
-
-    public function order()
-    {
-        return $this->belongsTo(Order::class);
-    }
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-// Alumno: Cristian Navarrete - Alejandro Ponce
+// Alumnos: Cristian Navarrete - Alejandro Ponce
 
 namespace App\Models;
 
