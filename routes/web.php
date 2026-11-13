@@ -4,45 +4,28 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Api\OrderController;
 
+// Página principal
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Comprobar la conexión con MySQL
 Route::get('/health', function () {
     try {
         $tables = DB::select('SHOW TABLES');
+
         return response()->json([
             'status' => 'success',
-            'message' => 'Base de datos MySQL conectada e inicializada correctamente',
+            'message' => 'Base de datos conectada correctamente',
             'database' => DB::connection()->getDatabaseName(),
             'tablas_detectadas' => array_map('current', $tables)
-        ]);
+        ], 200);
+
     } catch (\Exception $e) {
         return response()->json([
             'status' => 'error',
-            'message' => $e->getMessage()
+            'message' => 'Error al conectar con la base de datos'
         ], 500);
     }
-});
-
-// Rutas API para el Marketplace
-Route::prefix('api')->group(function () {
-    // Categorías
-    Route::get('/categories', [CategoryController::class, 'index']);
-    Route::post('/categories', [CategoryController::class, 'store']);
-    Route::get('/categories/{id}', [CategoryController::class, 'show']);
-
-    // Productos
-    Route::get('/products', [ProductController::class, 'index']);
-    Route::post('/products', [ProductController::class, 'store']);
-    Route::get('/products/{id}', [ProductController::class, 'show']);
-
-    // Pedidos / Órdenes
-    Route::get('/orders', [OrderController::class, 'index']);
-    Route::post('/orders', [OrderController::class, 'store']);
-    Route::get('/orders/{id}', [OrderController::class, 'show']);
 });

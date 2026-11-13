@@ -11,16 +11,22 @@ class SellerSeeder extends Seeder
 {
     public function run(): void
     {
-        Seller::create([
-            'name' => 'Tienda Oficial Gamer',
-            'email' => 'ventas@gamerstore.com',
-            'store_name' => 'GamerStore HQ'
-        ]);
+        Seller::updateOrCreate(
+            ['store_name' => 'GameStop'],
+            [
+                'name' => 'GameStop',
+                'email' => 'gamestop@example.com',
+                'store_name' => 'GameStop'
+            ]
+        );
 
-        Seller::create([
-            'name' => 'Pixel Digital',
-            'email' => 'contacto@pixeldigital.com',
-            'store_name' => 'Pixel Digital Keys'
-        ]);
+        Seller::updateOrCreate(
+            ['store_name' => 'Best Buy'],
+            [
+                'name' => 'Best Buy',
+                'email' => 'bestbuy@example.com',
+                'store_name' => 'Best Buy'
+            ]
+        );
     }
 }
